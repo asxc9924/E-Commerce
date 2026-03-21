@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA | Premium Bio-Acoustic Art</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-color: #F9F8F4;
+            --text-dark: #1A1A1A;
+            --text-light: #5A5A5A;
+            --accent-gold: #7D6334;
+            --accent-gold-hover: #5A4623;
+            --border-color: #E5E3DB;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand-logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand-logo { font-size: 2rem; font-weight: 600; letter-spacing: 2px; }
+        
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        .header-icons { display: flex; gap: 1.5rem; align-items: center; font-size: 1.2rem; cursor: pointer; }
+        .cart-icon { position: relative; }
+        .cart-count {
+            position: absolute; top: -8px; right: -10px;
+            background: var(--accent-gold); color: var(--white);
+            font-size: 0.7rem; padding: 2px 6px; border-radius: 50%;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 4rem 5%; min-height: 70vh; gap: 4rem;
+        }
+        
+        .hero-image {
+            flex: 1; height: 500px;
+            background: url('https://images.unsplash.com/photo-1618220179428-22790b46a0eb?q=80&w=1000&auto=format&fit=crop') center/cover;
+            border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .hero-content { flex: 1; background: var(--white); padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .hero-content h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .price { font-size: 1.5rem; color: var(--text-light); margin-bottom: 2rem; }
+        
+        .btn {
+            display: inline-block; padding: 1rem 2rem; width: 100%;
+            background-color: var(--accent-gold); color: var(--white);
+            text-align: center; text-transform: uppercase; letter-spacing: 1px;
+            border: none; cursor: pointer; transition: background 0.3s;
+            font-family: 'Lato', sans-serif; border-radius: 5px;
+        }
+        .btn:hover { background-color: var(--accent-gold-hover); }
+        
+        .btn-outline { background: transparent; border: 1px solid var(--accent-gold); color: var(--accent-gold); margin-top: 1rem;}
+        .btn-outline:hover { background: var(--accent-gold); color: var(--white); }
+
+        /* --- FEATURES SECTION --- */
+        .features {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+            padding: 4rem 5%; background: var(--white); border-top: 1px solid var(--border-color);
+        }
+        .feature-item { display: flex; gap: 1rem; align-items: flex-start; }
+        .feature-icon { font-size: 1.5rem; color: var(--accent-gold); }
+        .feature-text h4 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .feature-text p { font-size: 0.85rem; color: var(--text-light); }
+
+        /* --- SHOP GRID --- */
+        .shop-section { padding: 5rem 5%; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; }
+        
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .product-card { background: var(--white); padding: 1rem; border-radius: 10px; transition: transform 0.3s; text-align: center; cursor: pointer; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        
+        .product-img { width: 100%; height: 250px; background-color: #eee; border-radius: 8px; margin-bottom: 1rem; background-size: cover; background-position: center; }
+        .product-title { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .product-price { color: var(--accent-gold); font-weight: bold; margin-bottom: 1rem; }
+
+        /* --- CART SIDEBAR --- */
+        .cart-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 999; display: none;
+        }
+        .cart-sidebar {
+            position: fixed; top: 0; right: -400px; width: 400px; height: 100%;
+            background: var(--white); z-index: 1000; transition: right 0.3s ease;
+            display: flex; flex-direction: column; padding: 2rem; box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        }
+        .cart-sidebar.active { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; margin-bottom: 2rem; font-size: 1.5rem; }
+        .close-cart { cursor: pointer; }
+        .cart-items { flex: 1; overflow-y: auto; }
+        
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); }
+        .cart-item-info h4 { font-size: 1rem; }
+        .cart-item-remove { color: red; font-size: 0.8rem; cursor: pointer; margin-top: 5px; }
+        
+        .cart-footer { padding-top: 1rem; border-top: 2px solid var(--border-color); }
+        .cart-total { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; margin-bottom: 1.5rem; }
+
+        /* --- CHECKOUT MODAL (Simulated Payment Integration) --- */
+        .checkout-modal {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: var(--white); width: 90%; max-width: 500px; padding: 2rem;
+            border-radius: 10px; z-index: 1001; display: none; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+        .checkout-modal h2 { margin-bottom: 1.5rem; text-align: center; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .form-group input { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 5px; font-family: 'Lato'; }
+        
+        .stripe-element { padding: 1rem; border: 1px solid var(--border-color); border-radius: 5px; margin-bottom: 1.5rem; background: #fcfcfc; text-align: center; color: var(--text-light); font-size: 0.9rem;}
+        
+        /* Footer */
+        footer { background: var(--white); padding: 3rem 5%; text-align: center; border-top: 1px solid var(--border-color); margin-top: 3rem;}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-logo">AURA</div>
+        <nav class="nav-links">
+            <a href="#shop">Shop</a>
+            <a href="#">Story</a>
+            <a href="#">Technology</a>
+            <a href="#">Journal</a>
+        </nav>
+        <div class="header-icons">
+            <i class="fa-regular fa-user"></i>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count" id="cart-badge">0</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-image"></div>
+        <div class="hero-content">
+            <h1>AURA | Serenity Edition</h1>
+            <p class="price">$1,499.00</p>
+            <p style="margin-bottom: 2rem; color: var(--text-light);">The living sound sculpture. Handcrafted bio-acoustic art that merges premium audio with bioluminescent flora.</p>
+            <button class="btn" onclick="addToCart(1)">Add to Cart</button>
+            <button class="btn btn-outline">Customize Your Aura</button>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-item">
+            <i class="fa-solid fa-lightbulb feature-icon"></i>
+            <div class="feature-text">
+                <h4>Bio-Luminescence</h4>
+                <p>Flora reacts to sound and light.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-volume-high feature-icon"></i>
+            <div class="feature-text">
+                <h4>Premium Audio</h4>
+                <p>Integrated high-fidelity speakers.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-leaf feature-icon"></i>
+            <div class="feature-text">
+                <h4>Sustainability</h4>
+                <p>Locally sourced, organic materials.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-droplet feature-icon"></i>
+            <div class="feature-text">
+                <h4>Artisan Crafted</h4>
+                <p>Hand-blown glass structures.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="shop-section" id="shop">
+        <h2 class="section-title">The Collection</h2>
+        <div class="product-grid" id="product-grid">
+            </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AURA BIO-ACOUSTICS. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <i class="fa-solid fa-xmark close-cart" onclick="toggleCart()"></i>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cart-total-price">$0.00</span>
+            </div>
+            <button class="btn" onclick="openCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <div class="checkout-modal" id="checkout-modal">
+        <h2>Secure Checkout</h2>
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="John Doe">
+        </div>
+        <div class="form-group">
+            <label>Shipping Address</label>
+            <input type="text" placeholder="123 Premium Ave, NY">
+        </div>
+        
+        <div class="stripe-element">
+            <i class="fa-brands fa-cc-stripe" style="font-size: 2rem; color: #635bff; margin-bottom: 0.5rem;"></i>
+            <p>Secure Credit Card Gateway (Stripe Element mounts here)</p>
+        </div>
+
+        <button class="btn" onclick="processPayment()">Pay <span id="checkout-btn-total"></span></button>
+        <button class="btn btn-outline" onclick="closeCheckout()">Cancel</button>
+    </div>
+
+    <script>
+        // Product Database
+        const products = [
+            { id: 1, name: "AURA | Serenity Edition", price: 1499.00, img: "https://images.unsplash.com/photo-1545241047-6083a36a1c1c?q=80&w=500&auto=format&fit=crop" },
+            { id: 2, name: "AURA | Harmony Edition", price: 1599.00, img: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=500&auto=format&fit=crop" },
+            { id: 3, name: "Replacement Bioluminescent Core", price: 120.00, img: "https://images.unsplash.com/photo-1614088656663-896db841f32a?q=80&w=500&auto=format&fit=crop" },
+            { id: 4, name: "AURA Care Kit", price: 75.00, img: "https://images.unsplash.com/photo-1608248593842-8021c640e785?q=80&w=500&auto=format&fit=crop" }
+        ];
+
+        let cart = [];
+
+        // Render Products to Page
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            products.forEach(prod => {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <div class="product-img" style="background-image: url('${prod.img}')"></div>
+                        <h3 class="product-title">${prod.name}</h3>
+                        <p class="product-price">$${prod.price.toLocaleString('en-US', {minimumFractionDigits: 2})}</p>
+                        <button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;" onclick="addToCart(${prod.id})">Add to Cart</button>
+                    </div>
+                `;
+            });
+        }
+
+        // Cart Functions
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCartUI();
+            
+            // Show brief animation or open cart automatically
+            toggleCart(true); 
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-badge').innerText = cart.length;
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+            
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>$${item.price.toLocaleString('en-US', {minimumFractionDigits: 2})}</p>
+                            <span class="cart-item-remove" onclick="removeFromCart(${index})">Remove</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            const formattedTotal = `$${total.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            document.getElementById('cart-total-price').innerText = formattedTotal;
+            document.getElementById('checkout-btn-total').innerText = formattedTotal;
+        }
+
+        // UI Toggles
+        function toggleCart(forceOpen = false) {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            
+            if (forceOpen) {
+                sidebar.classList.add('active');
+                overlay.style.display = 'block';
+            } else {
+                sidebar.classList.toggle('active');
+                overlay.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
+            }
+        }
+
+        function openCheckout() {
+            if(cart.length === 0) return alert("Your cart is empty.");
+            toggleCart(); // close cart
+            document.getElementById('cart-overlay').style.display = 'block';
+            document.getElementById('checkout-modal').style.display = 'block';
+        }
+
+        function closeCheckout() {
+            document.getElementById('cart-overlay').style.display = 'none';
+            document.getElementById('checkout-modal').style.display = 'none';
+        }
+
+        function processPayment() {
+            const btn = document.querySelector('#checkout-modal .btn');
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Securing Session...';
+            
+            // Format cart for the backend
+            const itemsForBackend = cart.map(item => {
+                return { id: item.id, quantity: 1 } // Assuming 1 quantity per click for simplicity
+            });
+
+            // Send cart to backend
+            fetch('/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ items: itemsForBackend })
+            }).then(res => {
+                if (res.ok) return res.json();
+                return res.json().then(json => Promise.reject(json));
+            }).then(({ url }) => {
+                // Redirect user to Stripe's secure checkout page
+                window.location = url; 
+            }).catch(e => {
+                console.error(e.error);
+                btn.innerHTML = 'Error. Try Again.';
+            });
+        }
+
+        // Initialize Page
+        window.onload = renderProducts;
+
+    </script>
+</body>
+</html>
