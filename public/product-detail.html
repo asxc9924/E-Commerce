@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA | Product Detail Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Shared CSS Variables & Reset (from index.html) */
+        :root { --bg-color: #FDFCF9; --text-dark: #1A1A1A; --text-light: #5A5A5A; --accent-gold: #7D6334; --border-color: #EAE8E0; --white: #FFFFFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lato', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Shared HEADER */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+        .brand-logo { font-size: 2rem; font-weight: 600; letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-links a { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;}
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* MAIN PDP CONTENT */
+        .pdp-container { display: grid; grid-template-columns: 1fr 1fr; padding: 8rem 5%; gap: 6rem; align-items: start; }
+        
+        .pdp-image-section { position: sticky; top: 120px; }
+        .pdp-image { width: 100%; height: 600px; background-color: #eee; border-radius: 4px; background-size: cover; background-position: center; box-shadow: 20px 20px 60px rgba(0,0,0,0.03); }
+
+        .pdp-content-section { padding-right: 2rem; }
+        
+        .pdp-pretitle { text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; color: var(--accent-gold); font-weight: 700; margin-bottom: 0.5rem; display: block;}
+        h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        .pdp-price { font-size: 2.2rem; color: var(--text-light); margin-bottom: 3rem; display: block; }
+        
+        .pdp-description { font-size: 1.1rem; color: #444; margin-bottom: 3rem; }
+
+        /* VARIANT SELECTORS */
+        .pdp-variants { margin-bottom: 3rem; border-top: 1px solid #eee; padding-top: 2rem;}
+        .variant-group h4 { font-size: 1.1rem; margin-bottom: 1rem; letter-spacing: 1px;}
+        .variant-options { display: flex; gap: 1rem; }
+        .variant-swatch { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ddd; cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
+        .variant-swatch:hover { transform: scale(1.1); }
+        .variant-swatch.selected { border-color: var(--accent-gold); transform: scale(1.1); }
+
+        /* BUY BOX */
+        .pdp-buy-box { margin-bottom: 4rem; }
+        .btn { display: inline-block; padding: 1.2rem 2.5rem; width: 100%; background-color: var(--accent-gold); color: var(--white); text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; font-weight: 700; border: none; cursor: pointer; border-radius: 2px; transition: transform 0.2s; }
+        .btn:hover { transform: translateY(-1px); }
+
+        /* TABS/SPECS */
+        .pdp-details-tabs { border-top: 1px solid #eee; }
+        .tabs-header { display: flex; border-bottom: 1px solid #eee; margin-bottom: 2rem; }
+        .tab-btn { padding: 1.5rem 0; font-family: 'Lato'; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 0.8rem; border: none; background: transparent; cursor: pointer; color: var(--text-light); margin-right: 2rem; border-bottom: 3px solid transparent;}
+        .tab-btn.active { color: var(--text-dark); border-bottom-color: var(--accent-gold); }
+        .tab-content { display: none; padding-bottom: 2rem;}
+        .tab-content.active { display: block;}
+        
+        .specs-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 3rem; font-size: 0.9rem;}
+        .specs-list li { border-bottom: 1px solid #eee; padding: 10px 0; }
+        .spec-label { font-weight: bold; color: #333;}
+
+        footer { background: var(--text-dark); color: #888; padding: 4rem 5%; text-align: center; font-size: 0.85rem; border-top: 1px solid #333;}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-logo"><a href="index.html">AURA</a></div>
+        <nav class="nav-links">
+            <a href="index.html#shop">Shop</a>
+            <a href="about.html">Story</a>
+            <a href="journal.html#tech">Technology</a>
+            <a href="journal.html">Journal</a>
+        </nav>
+    </header>
+
+    <div class="pdp-container">
+        <div class="pdp-image-section">
+            <div class="pdp-image" style="background-image: url('https://images.unsplash.com/photo-1618220179428-22790b46a0eb?q=80&w=1000&auto=format&fit=crop');"></div>
+        </div>
+
+        <div class="pdp-content-section">
+            <span class="pdp-pretitle">The Living Sound Sculpture</span>
+            <h1>AURA | Serenity Edition</h1>
+            <span class="pdp-price">$1,499.00</span>
+            
+            <p class="pdp-description">Immerse yourself in a bio-acoustic masterpiece. The Serenity Edition features premium hand-pressed glass encasing locally sourced bioluminescent moss. Designed for contemplative spaces, it offers unparalleled 360° omnidirectional audio fidelity while casting a gentle, reactive glow. Craftsmanship that elevates your environment.</p>
+            
+            <div class="pdp-variants">
+                <div class="variant-group">
+                    <h4>Finish</h4>
+                    <div class="variant-options">
+                        <div class="variant-swatch selected" style="background-color: #E6DFD4;" title="Gold Chassis"></div>
+                        <div class="variant-swatch" style="background-color: #444;" title="Matte Black Chassis"></div>
+                        <div class="variant-swatch" style="background-color: #f1f1f1;" title="Silver Chassis"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdp-buy-box">
+                <button class="btn">Add to Collection</button>
+            </div>
+
+            <div class="pdp-details-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="openTab(event, 'details')">Details</button>
+                    <button class="tab-btn" onclick="openTab(event, 'specs')">Specifications</button>
+                    <button class="tab-btn" onclick="openTab(event, 'care')">Care</button>
+                </div>
+                <div id="details" class="tab-content active">
+                    <h4>Handcrafted Bio-Acoustic Art</h4>
+                    <p style="color: var(--text-light); margin-top: 1rem; font-size: 0.95rem;">Merging traditional artisan techniques with cutting-edge technology, AURA’s form is sculpted for ideal acoustic resonance. The bioluminescent moss reacts to sound and presence, creating a gentle pulse that synchronizes your visual and auditory environment.</p>
+                </div>
+                <div id="specs" class="tab-content">
+                    <ul class="specs-list">
+                        <li><span class="spec-label">Audio:</span> Omni speakers, 60W, 110dB</li>
+                        <li><span class="spec-label">Materials:</span> Gold alloy, hand-pressed glass</li>
+                        <li><span class="spec-label">Biology:</span> Pyrocystis moss, balanced ecosystem</li>
+                        <li><span class="spec-label">Connection:</span> Bluetooth 5.3, Wi-Fi, Spotify Connect</li>
+                        <li><span class="spec-label">Weight:</span> 8.5 lbs / 3.8 kg</li>
+                        <li><span class="spec-label">Dimensions:</span> 12" x 12" x 14" (H)</li>
+                    </ul>
+                </div>
+                <div id="care" class="tab-content">
+                    <h4>Biological Maintenance</h4>
+                    <p style="color: var(--text-light); margin-top: 1rem; font-size: 0.95rem;">AURA's core contains a living bioluminescent ecosystem. It requires minimal care. Use the included biological nutrient solution once every 3 months. Wipe glass with the microfiber cloth from the AURA Care Kit. Avoid direct sunlight.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer><p>&copy; 2026 AURA BIO-ACOUSTICS. ALL RIGHTS RESERVED.</p></footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            const contents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+            const buttons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>

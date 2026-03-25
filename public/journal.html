@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA | The Journal & Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Shared CSS Variables & Reset (from index.html) */
+        :root { --bg-color: #FDFCF9; --text-dark: #1A1A1A; --text-light: #5A5A5A; --accent-gold: #7D6334; --border-color: #EAE8E0; --white: #FFFFFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lato', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; }
+        h1, h2, h3, h4, .brand-logo { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; transition: color 0.3s;}
+
+        /* Shared HEADER */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+        .brand-logo { font-size: 2rem; font-weight: 600; letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-links a { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;}
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* JOURNAL GRID */
+        .journal-container { padding: 8rem 5%; }
+        .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+        
+        /* Post card styling */
+        .journal-post-card { background: var(--white); padding: 2rem; border-radius: 4px; border: 1px solid #F0F0EE;}
+        .post-category { text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; color: var(--accent-gold); font-weight: 700; margin-bottom: 1rem; display: block;}
+        .journal-post-card h3 { font-size: 1.5rem; margin-bottom: 1rem;}
+        .journal-post-card p { color: var(--text-light); font-size: 0.9rem; }
+        .post-link { margin-top: 1.5rem; display: block; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;}
+        .post-link:hover { color: var(--accent-gold); }
+
+        /* TECHNOLOGY DEEP DIVE SECTION */
+        .tech-deep-dive { padding: 8rem 5%; background-color: var(--white); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); margin-top: 4rem;}
+        .section-pretitle { text-transform: uppercase; letter-spacing: 3px; font-size: 0.85rem; color: var(--accent-gold); font-weight: 700; margin-bottom: 1rem; display: block; text-align: center;}
+        .tech-deep-dive h2 { font-size: 3rem; margin-bottom: 5rem; text-align: center; }
+        .tech-content { max-width: 900px; margin: 0 auto;}
+        .tech-content p { font-size: 1.1rem; color: #444; margin-bottom: 2rem;}
+
+        footer { background: var(--text-dark); color: #888; padding: 4rem 5%; text-align: center; font-size: 0.85rem; border-top: 1px solid #333;}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-logo"><a href="index.html">AURA</a></div>
+        <nav class="nav-links">
+            <a href="index.html#shop">Shop</a>
+            <a href="about.html">Story</a>
+            <a href="#tech">Technology</a>
+            <a href="journal.html">Journal</a>
+        </nav>
+    </header>
+
+    <div class="journal-container">
+        <h2 class="section-title" style="text-align: center; font-size: 3rem; margin-bottom: 5rem;">AURA | The Journal</h2>
+        <div class="journal-grid">
+            
+            <div class="journal-post-card">
+                <span class="post-category">Sustainability</span>
+                <h3>Locally Sourced: Murano Glass</h3>
+                <p>A deep dive into our commitment to local artistry. Exploring the history of Italian glass pressing and its application in bio-harmonic resonance design.</p>
+                <a href="#" class="post-link">Read More +</a>
+            </div>
+
+            <div class="journal-post-card">
+                <span class="post-category">Care Guide</span>
+                <h3>Biological Core: Long-Term Care</h3>
+                <p>Maximizing the lifespan of your Pyrocystis moss. We outline ideal conditions for maintaining peak bioluminescent reactivity over 18+ months.</p>
+                <a href="#" class="post-link">Read More +</a>
+            </div>
+
+            <div class="journal-post-card">
+                <span class="post-category">Innovation</span>
+                <h3>The Evolution of AURA: Beta Tests</h3>
+                <p>Behind the scenes of our initial R&D phase in Reykjavik, featuring earlier concepts and the pivotal moments of fusing audio and biology.</p>
+                <a href="#" class="post-link">Read More +</a>
+            </div>
+
+        </div>
+    </div>
+
+    <section id="tech" class="tech-deep-dive">
+        <span class="section-pretitle">The Core Principle</span>
+        <h2>Bio-Acoustic Resonance</h2>
+        <div class="tech-content">
+            <p>Traditional audio relies on rigid structures, but nature is fluid. The foundational technology behind AURA, Bio-Acoustic Resonance, converts audio frequencies into gentle, controlled micro-vibrations across the surface of our custom hand-pressed glass chambers.</p>
+            <p>Our patented Bio-Core housing contains Pyrocystis moss in a balanced ecosystem. These specialized organisms are uniquely sensitive to these physical micro-vibrations, translating them instantly into bursts of natural, blue-green light. It's an active, responsive synthesis where every sound wave literally creates a pulse of life. Science made visible, made tactile, made living.</p>
+        </div>
+    </section>
+
+    <footer><p>&copy; 2026 AURA BIO-ACOUSTICS. ALL RIGHTS RESERVED.</p></footer>
+
+</body>
+</html>

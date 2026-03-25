@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA | Our Story</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Shared CSS Variables & Reset (from index.html) */
+        :root { --bg-color: #FDFCF9; --text-dark: #1A1A1A; --text-light: #5A5A5A; --accent-gold: #7D6334; --border-color: #EAE8E0; --white: #FFFFFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lato', sans-serif; background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; }
+        h1, h2, h3, .brand-logo { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Shared HEADER */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+        .brand-logo { font-size: 2rem; font-weight: 600; letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-links a { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;}
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* ABOUT CONTENT */
+        .story-hero { height: 70vh; background-color: #eee; display: flex; align-items: center; justify-content: center; text-align: center; border-bottom: 1px solid var(--border-color);}
+        .story-hero h1 { font-size: 4rem; color: #fff; text-shadow: 0 5px 20px rgba(0,0,0,0.4); text-transform: uppercase; letter-spacing: 4px; }
+        
+        .story-section { padding: 8rem 20%; background-color: #F4F2EE;}
+        .section-pretitle { text-transform: uppercase; letter-spacing: 3px; font-size: 0.85rem; color: var(--accent-gold); font-weight: 700; margin-bottom: 1rem; display: block;}
+        .story-section h2 { font-size: 2.8rem; margin-bottom: 3rem; max-width: 600px; }
+        .story-body { font-size: 1.1rem; color: #444; max-width: 800px;}
+        .story-body p { margin-bottom: 2rem;}
+
+        .craft-philosophy { padding: 8rem 5%; background-color: var(--white);}
+        .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;}
+        .craft-text h3 { font-size: 2.2rem; margin-bottom: 1.5rem; }
+        .craft-img { height: 450px; background-color: #eee; background-size: cover;}
+
+        footer { background: var(--text-dark); color: #888; padding: 4rem 5%; text-align: center; font-size: 0.85rem; border-top: 1px solid #333;}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-logo"><a href="index.html">AURA</a></div>
+        <nav class="nav-links">
+            <a href="index.html#shop">Shop</a>
+            <a href="about.html">Story</a>
+            <a href="journal.html#tech">Technology</a>
+            <a href="journal.html">Journal</a>
+        </nav>
+    </header>
+
+    <section class="story-hero" style="background-image: url('https://images.unsplash.com/photo-1541976844346-f18aeac57b06?q=80&w=1000&auto=format&fit=crop'); background-position: center bottom;">
+        <h1>Our Journey</h1>
+    </section>
+
+    <section class="story-section">
+        <span class="section-pretitle">The Origins</span>
+        <h2>The Intersection of Life and Sound</h2>
+        <div class="story-body">
+            <p>AURA was founded in a small glass-blowing studio in Reykjavik. Our founders, a molecular biologist and an acoustic engineer, shared a single, obsessive vision: technology shouldn't just look organic—it should *be* organic.</p>
+            <p>They spent years perfecting the "Bio-Core"—a patented ecosystem where sound waves convert micro-vibrations into bioluminescence. It was an evolution of the traditional speaker into something living, responsive, and tactile. The result is AURA, a handcrafted bridge between contemporary design and environmental consciousness.</p>
+        </div>
+    </section>
+
+    <section class="craft-philosophy">
+        <div class="philosophy-grid">
+            <div class="craft-img" style="background-image: url('https://images.unsplash.com/photo-1582260613271-e0e98f7961da?q=80&w=1000&auto=format&fit=crop');"></div>
+            <div class="craft-text">
+                <h3>Design with Intention</h3>
+                <p style="color: var(--text-light); margin-bottom: 2rem;">We prioritize longevity over disposability. AURA’s minimal, sculpted form is crafted from sustainably sourced materials and medical-grade glass, designed to outlast typical tech lifecycles. Our artisan program ensures every chassis is finished by hand, minimizing waste and maximizing detail. In a world of noise, we choose to design with quiet intention.</p>
+                <i class="fa-solid fa-peace" style="color: var(--accent-gold); font-size: 2rem;"></i>
+            </div>
+        </div>
+    </section>
+
+    <footer><p>&copy; 2026 AURA BIO-ACOUSTICS. ALL RIGHTS RESERVED.</p></footer>
+
+</body>
+</html>
